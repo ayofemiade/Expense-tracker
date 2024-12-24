@@ -39,21 +39,47 @@ function addExpense(e) {
     updateChart();
 }
 
-// Update Expense Table
 function updateExpenseTable() {
+    const expenseTableBody = document.getElementById('expenseTableBody');
     expenseTableBody.innerHTML = '';
+
     expenses.forEach((expense, index) => {
-        const row = expenseTableBody.insertRow();
+        const row = document.createElement('div');
+        row.className = 'expense-row';
         row.innerHTML = `
-            <td>${expense.date}</td>
-            <td><i class="fa-solid fa-${getCategoryIcon(expense.category)}"></i> ${expense.category}</td>
-            <td>${expense.description}</td>
-            <td>$${expense.amount.toFixed(2)}</td>
-            <td>
-                <button onclick="editExpense(${index})"><i class="fa-solid fa-edit"></i></button>
-                <button onclick="deleteExpense(${index})"><i class="fa-solid fa-trash"></i></button>
-            </td>
+            <div class="expense-data">
+                <div class="expense-label">Date:</div>
+                <div class="expense-value">${expense.date}</div>
+            </div>
+            <div class="expense-data">
+                <div class="expense-label">Category:</div>
+                <div class="expense-value">
+                    <span class="expense-category">
+                        <i class="fa-solid fa-${getCategoryIcon(expense.category)}"></i>
+                        ${expense.category}
+                    </span>
+                </div>
+            </div>
+            <div class="expense-data">
+                <div class="expense-label">Description:</div>
+                <div class="expense-value">${expense.description}</div>
+            </div>
+            <div class="expense-data">
+                <div class="expense-label">Amount:</div>
+                <div class="expense-value">$${expense.amount.toFixed(2)}</div>
+            </div>
+            <div class="expense-actions">
+                <button class="action-button" onclick="editExpense(${index})">
+                    <i class="fa-solid fa-edit"></i>
+                    <span class="button-text">Edit</span>
+                </button>
+                <button class="action-button delete" onclick="deleteExpense(${index})">
+                    <i class="fa-solid fa-trash"></i>
+                    <span class="button-text">Delete</span>
+                </button>
+            </div>
         `;
+        expenseTableBody.appendChild(row);
     });
 }
 

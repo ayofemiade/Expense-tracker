@@ -127,3 +127,107 @@ button:hover {
     }
 }
 
+/* Expense List Responsive Styles */
+.expense-list-container {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.expense-row {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    border-bottom: 1px solid #ddd;
+    background-color: white;
+}
+
+.expense-data {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    align-items: center;
+    margin: 0.25rem 0;
+    gap: 1rem;
+}
+
+.expense-label {
+    font-weight: bold;
+    color: #666;
+}
+
+.expense-value {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.expense-value.amount {
+    justify-content: flex-end;
+}
+
+.expense-category {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.expense-category i {
+    width: 16px;
+    text-align: center;
+}
+
+.expense-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid #eee;
+}
+
+.action-button {
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.action-button.delete {
+    background-color: #dc3545;
+}
+
+/* Desktop Styles */
+@media (min-width: 768px) {
+    .expense-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr auto;
+        align-items: center;
+        gap: 1rem;
+        padding: 0.75rem;
+    }
+
+    .expense-data {
+        display: block;
+        margin: 0;
+    }
+
+    .expense-label {
+        display: none;
+    }
+
+    .expense-value {
+        padding: 0;
+    }
+
+    .expense-actions {
+        margin-top: 0;
+        padding-top: 0;
+        border-top: none;
+        width: auto;
+        min-width: 120px;
+    }
+}
